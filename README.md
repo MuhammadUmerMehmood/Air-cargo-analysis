@@ -56,20 +56,7 @@ air-cargo-analysis/
 ## Project Phases
 
 ### Phase 1 — Data Cleaning
-- Removed regional/group aggregates, kept only real countries
-- Replaced World Bank missing value marker `..` with `NaN`
-- Reshaped data from wide to long format using `melt()`
-- Pivoted metrics into separate columns
-- Exported clean dataset
-
 ### Phase 2 — Exploratory Data Analysis
-- Top 10 countries by air freight volume
-- Global air freight trend (2005–2019)
-- Top 10 countries by passengers carried
-- Correlation between departures and freight
-- Correlation heatmap of all metrics
-- Distribution of LPI infrastructure scores
-- Top 10 countries by carrier departures
 
 ## Key Findings
 - The **USA, China and Germany** dominate global air freight
@@ -78,37 +65,15 @@ air-cargo-analysis/
 - Countries with **higher LPI scores** tend to handle more freight
 - **LPI infrastructure scores** are mostly clustered between 2.0 and 3.5 globally
 
-## Tools & Libraries
+## Tools 
 | Tool | Purpose |
 |------|---------|
 | Python | Core programming language |
-| Pandas | Data manipulation |
-| NumPy | Numerical operations |
-| Matplotlib | Data visualization |
-| Seaborn | Statistical visualization |
 
-## How to Run
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/air-cargo-analysis.git
-cd air-cargo-analysis
-```
 
-2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-3. Run notebooks in order
-```
-notebooks/phase1_data_cleaning.ipynb
-notebooks/phase2_eda.ipynb
 ```
 
 ## Author
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+**Muhammad Umer Mehmood**
+- LinkedIn: [Umer](https://www.linkedin.com/in/umer-cheena-sp20bcs012/)
 
-## License
-This project is open source and available under the [MIT License](LICENSE).
