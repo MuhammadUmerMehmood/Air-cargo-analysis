@@ -58,7 +58,6 @@ air-cargo-analysis/
 ### Phase 1 — Data Cleaning
 ### Phase 2 — Exploratory Data Analysis
 
----
 
 ## Key Findings
 - The **USA, China and Germany** dominate global air freight
@@ -67,18 +66,16 @@ air-cargo-analysis/
 - Countries with **higher LPI scores** tend to handle more freight
 - **LPI infrastructure scores** are mostly clustered between 2.0 and 3.5 globally
 
----
 
 ## Tools 
 | Tool | Purpose |
 |------|---------|
 | Python | Core programming language |
 
----
+
 ## Author
 **Muhammad Umer Mehmood**
 
 - LinkedIn: [Umer](https://www.linkedin.com/in/umer-cheena-sp20bcs012/)
   
-```
 
