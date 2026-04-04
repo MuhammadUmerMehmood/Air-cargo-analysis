@@ -57,6 +57,9 @@ air-cargo-analysis/
 
 ### Phase 1 — Data Cleaning
 ### Phase 2 — Exploratory Data Analysis
+### Phase 3 - Feature Engeering 
+### Phase 4 - Modelling
+### Phase 5 - Dashboard
 
 
 ## Key Findings
