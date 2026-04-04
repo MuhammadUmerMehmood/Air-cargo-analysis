@@ -24,10 +24,42 @@ st.set_page_config(
 # ══════════════════════════════════════════
 @st.cache_data
 def load_data():
-    df = pd.read_csv("air_cargo_features.csv")
-    return df
+    df_raw = pd.read_csv("data.csv", encoding="utf-8-sig")
 
-df = load_data()
+    valid_codes = ['IS.AIR.DPRT','IS.AIR.GOOD.MT.K1','IS.AIR.PSGR','LP.LPI.INFR.XQ']
+    df = df_raw[df_raw['Series Code'].isin(valid_codes)].copy()
+
+    df.rename(columns={'Series Name':'series_name','Series Code':'series_code',
+                       'Country Name':'country','Country Code':'country_code'}, inplace=True)
+
+    year_cols = [c for c in df.columns if 'YR' in c]
+    df[year_cols] = df[year_cols].replace('..', np.nan)
+    df[year_cols] = df[year_cols].apply(pd.to_numeric, errors='coerce')
+
+    df_long = df.melt(id_vars=['country','country_code','series_name','series_code'],
+                      value_vars=year_cols, var_name='year', value_name='value')
+    df_long['year'] = df_long['year'].str[:4].astype(int)
+
+    df_pivot = df_long.pivot_table(index=['country','country_code','year'],
+                                   columns='series_code', values='value').reset_index()
+    df_pivot.columns.name = None
+    df_pivot.rename(columns={'IS.AIR.DPRT':'departures','IS.AIR.GOOD.MT.K1':'freight_mton_km',
+                              'IS.AIR.PSGR':'passengers','LP.LPI.INFR.XQ':'lpi_infra_score'}, inplace=True)
+
+    exclude_codes = ['ARB','CSS','CEB','EAR','EAS','TEA','EAP','ECA','TEC','ECS',
+                     'EMU','EUU','FCS','HIC','HPC','IBD','IBT','IDB','IDX','IDA',
+                     'LTE','LCN','TLA','LAC','LDC','LMY','LIC','LMC','MEA','TMN',
+                     'MNA','MIC','NAC','OED','OSS','PSS','PST','PRE','SST','SAS',
+                     'TSA','SSF','TSS','SSA','UMC','WLD']
+    df = df_pivot[~df_pivot['country_code'].isin(exclude_codes)].copy()
+
+    df = df.sort_values(['country','year'])
+    df['freight_yoy_growth'] = df.groupby('country')['freight_mton_km'].pct_change() * 100
+    df['freight_efficiency'] = df['freight_mton_km'] / df['departures']
+    df['freight_lag1'] = df.groupby('country')['freight_mton_km'].shift(1)
+    df['freight_lag2'] = df.groupby('country')['freight_mton_km'].shift(2)
+
+    return df
 
 # ══════════════════════════════════════════
 # SIDEBAR
