@@ -62,15 +62,15 @@ air-cargo-analysis/
 
 ## 🚀 Project Phases
 
-### ✅ Phase 1 — Data Cleaning
+✅ Phase 1 — Data Cleaning
 
-### ✅ Phase 2 — Exploratory Data Analysis
+✅ Phase 2 — Exploratory Data Analysis
 
-### ✅ Phase 3 — Feature Engineering
+✅ Phase 3 — Feature Engineering
 
-### ✅ Phase 4 — Modelling
+✅ Phase 4 — Modelling
 
-### ✅ Phase 5 — Dashboard
+✅ Phase 5 — Dashboard
 ---
 
 ## 🔑 Key Findings
